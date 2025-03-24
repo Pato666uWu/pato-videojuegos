@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recomendaciones de Juegos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Press Start 2P', cursive;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            text-align: center;
+        }
+
+        header {
+            background: linear-gradient(90deg, #ff4500, #ffcc00);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+
+        /* Menú de navegación */
+        nav {
+            background-color: #333;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Contenedor principal */
+        .container {
+            padding: 40px;
+            max-width: 900px;
+            margin: 30px auto;
+            background: #222;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
+        }
+
+        .container h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+
+        .recommendation-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .recommendation-item {
+            width: 30%;
+            background-color: #333;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(255, 204, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .recommendation-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(255, 204, 0, 0.4);
+        }
+
+        .recommendation-item h3 {
+            color: #ffcc00;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .recommendation-item p {
+            color: #f5f5f5;
+            font-size: 1.1em;
+        }
+
+        .favorite-btn {
+            background-color: #ff4500;
+            color: white;
+            padding: 10px;
+            margin-top: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .favorite-btn:hover {
+            background-color: #ffcc00;
+        }
+
+        footer {
+            background-color: #111;
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+        }
+
+        /* Historial y favoritos */
+        .history-container, .favorite-container {
+            margin-top: 40px;
+        }
+
+        .history-container ul, .favorite-container ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+            color: #ffcc00;
+        }
+
+        .history-container li, .favorite-container li {
+            background: #333;
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Recomendaciones de Juegos</h1>
+</header>
+
+<!-- Menú de navegación -->
+<nav>
+    <ul>
+        <li><a href="prueba.html">Inicio</a></li>
+        <li><a href="horarios.html">Horarios</a></li>
+        <li><a href="formularia.html">Formulario</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="coctacto.html">Contacto</a></li>
+    </ul>
+</nav>
+
+<!-- Contenido principal -->
+<div class="container">
+    <h2>Recomendaciones de Juegos</h2>
+    <div class="recommendation-list" id="recommendations">
+        <!-- Recomendaciones se agregarán aquí con JavaScript -->
+    </div>
+</div>
+
+<!-- Historial de búsquedas -->
+<div class="history-container">
+    <h2>Historial de Búsquedas:</h2>
+    <ul id="history"></ul>
+</div>
+
+<!-- Favoritos -->
+<div class="favorite-container">
+    <h2>Juegos Favoritos:</h2>
+    <ul id="favorites"></ul>
+</div>
+
+<footer>
+    <p>&copy; 2025 Recomendaciones de Juegos. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+    // Definir las recomendaciones con categorías
+    const recommendations = [
+        { title: "Juego 1", description: "Un juego lleno de acción para los amantes de las batallas épicas.", category: "accion" },
+        { title: "Juego 2", description: "Aventura en un mundo abierto, ideal para explorar y resolver misterios.", category: "aventura" },
+        { title: "Juego 3", description: "Perfecto para relajarse y disfrutar de un mundo tranquilo y pacífico.", category: "relajantes" },
+        { title: "Juego 4", description: "Acción sin descanso, combates intensos y jefes desafiantes.", category: "accion" },
+        { title: "Juego 5", description: "Explora una antigua civilización en busca de secretos ocultos.", category: "aventura" },
+        { title: "Juego 6", description: "Un juego de rol donde puedes crear tu propio destino.", category: "aventura" },
+        { title: "Juego 7", description: "Desafía tu mente con puzzles que te harán pensar profundamente.", category: "relajantes" },
+        { title: "Juego 8", description: "Compite en emocionantes carreras y eventos deportivos.", category: "accion" },
+        { title: "Juego 9", description: "Un juego de terror donde deberás sobrevivir a horrores inimaginables.", category: "accion" },
+        { title: "Juego 10", description: "Aventura épica en un mundo fantástico lleno de magia.", category: "aventura" },
+        { title: "Juego 11", description: "Juega con amigos y enfrenta desafíos cooperativos.", category: "relajantes" },
+        { title: "Juego 12", description: "Explora el espacio y enfrenta batallas cósmicas en el vacío.", category: "accion" }
+    ];
+
+    // Mostrar las recomendaciones basadas en la categoría seleccionada
+    function displayRecommendations(filteredRecommendations) {
+        const recommendationsContainer = document.getElementById("recommendations");
+        recommendationsContainer.innerHTML = ""; // Limpiar contenido previo
+        filteredRecommendations.forEach(recommendation => {
+            const item = document.createElement("div");
+            item.classList.add("recommendation-item");
+            item.innerHTML = `
+                <h3>${recommendation.title}</h3>
+                <p>${recommendation.description}</p>
+                <button class="favorite-btn" onclick="addToFavorites('${recommendation.title}')">Agregar a Favoritos</button>
+            `;
+            recommendationsContainer.appendChild(item);
+        });
+    }
+
+    // Filtrar recomendaciones por categoría
+    function filterRecommendations(category) {
+        let filteredRecommendations;
+        if (category === 'todos') {
+            filteredRecommendations = recommendations;
+        } else {
+            filteredRecommendations = recommendations.filter(recommendation => recommendation.category === category);
+        }
+        displayRecommendations(filteredRecommendations);
+        saveToHistory(category);
+    }
+
+    // Guardar la búsqueda en el historial
+    function saveToHistory(category) {
+        let history = JSON.parse(localStorage.getItem("history")) || [];
+        history.push(category);
+        localStorage.setItem("history", JSON.stringify(history));
+        displayHistory();
+    }
+
+    // Mostrar el historial de búsquedas
+    function displayHistory() {
+        const history = JSON.parse(localStorage.getItem("history")) || [];
+        const historyContainer = document.getElementById("history");
+        historyContainer.innerHTML = "";
+        history.forEach((category, index) => {
+            const item = document.createElement("li");
+            item.textContent = `Categoría buscada: ${category}`;
+            historyContainer.appendChild(item);
+        });
+    }
+
+    // Agregar juego a favoritos
+    function addToFavorites(gameTitle) {
+        let favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        if (!favorites.includes(gameTitle)) {
+            favorites.push(gameTitle);
+            localStorage.setItem("favorites", JSON.stringify(favorites));
+            displayFavorites();
+        }
+    }
+
+    // Mostrar los juegos favoritos
+    function displayFavorites() {
+        const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
+        const favoritesContainer = document.getElementById("favorites");
+        favoritesContainer.innerHTML = "";
+        favorites.forEach((game, index) => {
+            const item = document.createElement("li");
+            item.textContent = game;
+            favoritesContainer.appendChild(item);
+        });
+    }
+
+    // Llamar a las funciones al cargar la página
+    window.onload = () => {
+        displayRecommendations(recommendations); // Mostrar todas las recomendaciones al inicio
+        displayHistory(); // Mostrar historial
+        displayFavorites(); // Mostrar favoritos
+    };
+</script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Juegos - Inicio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Press Start 2P', cursive;
+            margin: 0;
+            padding: 0;
+            background-color: #1a1a1a;
+            color: #f5f5f5;
+            text-align: center;
+        }
+        header {
+            background: linear-gradient(90deg, #ff4500, #ffcc00);
+            color: white;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        
+        /* Menú de navegación */
+        nav {
+            background-color: #333;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s ease;
+        }
+        nav ul li a:hover {
+            color: #ffcc00;
+        }
+        
+        /* Contenedor principal */
+        .container {
+            padding: 40px;
+            max-width: 900px;
+            margin: 30px auto;
+            background: #222;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(255, 204, 0, 0.3);
+        }
+        .container h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        
+        /* Botones */
+        .button {
+            padding: 15px 30px;
+            font-size: 1.2em;
+            background-color: #ff4500;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #ffcc00;
+        }
+        
+        /* Formulario de usuario */
+        .user-form {
+            margin-top: 20px;
+            margin-bottom: 30px;
+        }
+        .user-form input {
+            padding: 10px;
+            font-size: 1em;
+            border: 2px solid #ff4500;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 300px;
+            margin-bottom: 10px;
+        }
+        .user-form button {
+            display: block;
+            width: 100%;
+            max-width: 300px;
+            margin: auto;
+        }
+        
+        /* Lista de usuarios */
+        .user-list {
+            margin-top: 20px;
+            text-align: left;
+            padding: 10px;
+            background: #333;
+            border-radius: 5px;
+            display: inline-block;
+            color: #ffcc00;
+        }
+        
+        /* Pie de página */
+        footer {
+            background-color: #111;
+            color: white;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Bienvenido a la Página de Juegos</h1>
+</header>
+
+<!-- Menú de navegación -->
+<nav>
+    <ul>
+        <li><a href="prueba.html">Inicio</a></li>
+        <li><a href="horarios.html">Horarios</a></li>
+        <li><a href="formularia.html">Formulario</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="coctacto.html">Contacto</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h2 id="greeting-message">Bienvenido a nuestra página de juegos. Explora las secciones para más detalles.</h2>
+    
+    <div class="user-form">
+        <input type="text" id="username" placeholder="Ingresa tu nombre">
+        <button class="button" onclick="setUser()">Agregar Usuario</button>
+    </div>
+    
+    <div class="user-list" id="user-list"></div>
+    
+    <button class="button" onclick="location.href='formulario.html'">Solicitar un Juego</button>
+</div>
+
+<footer>
+    <p>&copy; 2025 Página de Juegos. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+      function setGreeting() {
+            const hour = new Date().getHours();
+            const greetingMessage = document.getElementById("greeting-message");
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            const lastUser = users.length ? users[users.length - 1] : null;
+            let greeting;
+            if (hour >= 5 && hour < 12) {
+                greeting = "¡Buenos días";
+            } else if (hour >= 12 && hour < 18) {
+                greeting = "¡Buenas tardes";
+            } else {
+                greeting = "¡Buenas noches";
+            }
+            greetingMessage.textContent = lastUser ? `${greeting}, ${lastUser}! Explora nuestra colección de juegos.` : `${greeting}! Explora nuestra colección de juegos.`;
+            updateUserList();
+        }
+        function setUser() {
+            const username = document.getElementById("username").value.trim();
+            if (username) {
+                let users = JSON.parse(localStorage.getItem("users")) || [];
+                users.push(username);
+                localStorage.setItem("users", JSON.stringify(users));
+                updateUserList();
+                setGreeting();
+            }
+        }
+        function updateUserList() {
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            const userListDiv = document.getElementById("user-list");
+            userListDiv.innerHTML = users.length ? `<strong>Usuarios registrados:</strong><br>${users.join("<br>")}` : "";
+        }
+        function redirectToForm() {
+            location.href = 'formulario.html';
+        }
+        window.onload = setGreeting;
+</script>
+
+</body>
+</html>

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Solicitud de Juegos</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            transition: color 0.3s;
+        }
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+        label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+            color: #333;
+        }
+        form input, form select, form textarea, form button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 5px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        form textarea {
+            resize: vertical;
+            height: 100px;
+        }
+        form button {
+            background-color: #333;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.3s;
+        }
+        form button:hover {
+            background-color: #222;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    Formulario de Solicitud de Juegos
+</header>
+
+<nav>
+    <ul>
+        <li><a href="prueba.html">Inicio</a></li>
+        <li><a href="horarios.html">Horarios</a></li>
+        <li><a href="formularia.html">Formulario</a></li>
+        <li><a href="recomendaciones.html">Recomendaciones</a></li>
+        <li><a href="coctacto.html">Contacto</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h2>Solicita tu Juego</h2>
+    <form>
+        <label for="game-name">Nombre del Juego:</label>
+        <input type="text" id="game-name" name="game-name" required>
+
+        <label for="platform">Plataforma:</label>
+        <select id="platform" name="platform" required>
+            <option value="pc">PC</option>
+            <option value="xbox">Xbox</option>
+            <option value="ps">PlayStation</option>
+            <option value="switch">Nintendo Switch</option>
+            <option value="android">Teléfono</option>
+            <option value="tablet">Tablet</option>
+        </select>
+
+        <label for="category">Categoría del Juego:</label>
+        <select id="category" name="category" required>
+            <option value="accion">Acción</option>
+            <option value="aventura">Aventura</option>
+            <option value="deportes">Deportes</option>
+            <option value="estrategia">Estrategia</option>
+            <option value="simulador">Simulador</option>
+            <option value="rol">RPG</option>
+            <option value="puzzle">Puzzle</option>
+        </select>
+
+        <label for="players">Cantidad de Jugadores:</label>
+        <select id="players" name="players" required>
+            <option value="1">1 Jugador</option>
+            <option value="2">2 Jugadores</option>
+            <option value="3">3 Jugadores</option>
+            <option value="4">4 Jugadores</option>
+            <option value="5">5 Jugadores</option>
+            <option value="6">6 Jugadores</option>
+            <option value="7">7 Jugadores</option>
+            <option value="8">8 Jugadores</option>
+        </select>
+
+        <label for="game-mode">Modo de Juego:</label>
+        <select id="game-mode" name="game-mode" required>
+            <option value="online">Juego Online</option>
+            <option value="solitario">Juego Solitario</option>
+            <option value="con-internet">Juego con Internet</option>
+            <option value="sin-internet">Juego sin Internet</option>
+        </select>
+
+        <label for="priority">Prioridad:</label>
+        <select id="priority" name="priority">
+            <option value="alta">Alta</option>
+            <option value="media">Media</option>
+            <option value="baja">Baja</option>
+        </select>
+
+        <label for="message">Mensaje Adicional:</label>
+        <textarea id="message" name="message"></textarea>
+
+        <button type="submit">Enviar Solicitud</button>
+    </form>
+</div>
+
+</body>
+</html>
